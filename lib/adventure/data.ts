@@ -129,7 +129,7 @@ const baseActivities: Activity[] = [
   ] },
   { id: 'g1-body', title: 'Parts of the Body', description: 'Match the word with the correct part of the body.', type: 'match-concepts', difficulty: 'facil', subjectId: 's-english', grade: '1', xpReward: 10, questions: [{ id: 'body-1', prompt: 'Match the word with the correct part of the body.', pairs: [{ left: 'Head', right: 'Head' }, { left: 'Arms', right: 'Arms' }, { left: 'Hands', right: 'Hands' }, { left: 'Legs', right: 'Legs' }, { left: 'Feet', right: 'Feet' }] }] },
   { id: 'g1-big-small', title: 'Big or Small', description: 'Choose the big or small one.', type: 'image-question', difficulty: 'facil', subjectId: 's-english', grade: '1', xpReward: 10, questions: [{ id: 'size-1', prompt: 'Tap the BIG elephant.', image: '/games/elephant-big.png', options: ['Big', 'Small'], answerIndex: 0 }, { id: 'size-2', prompt: 'Tap the SMALL car.', image: '/games/car-small.png', options: ['Big', 'Small'], answerIndex: 1 }, { id: 'size-3', prompt: 'Tap the BIG ball.', image: '/games/ball-big.png', options: ['Big', 'Small'], answerIndex: 0 }, { id: 'size-4', prompt: 'Tap the SMALL teddy.', image: '/games/teddy-small.png', options: ['Big', 'Small'], answerIndex: 1 }, { id: 'size-5', prompt: 'Tap the BIG tree.', image: '/games/tree-big.png', options: ['Big', 'Small'], answerIndex: 0 }] },
-  { id: 'g1-short-long', title: 'Short or Long', description: 'Look at the pictures and choose short or long.', type: 'multiple-choice', difficulty: 'facil', subjectId: 's-english', grade: '1', xpReward: 10, questions: [{ id: 'length-1', prompt: 'Choose the long pencil.', options: ['Short', 'Long'], answerIndex: 1 }, { id: 'length-2', prompt: 'Choose the short rope.', options: ['Short', 'Long'], answerIndex: 0 }, { id: 'length-3', prompt: 'Choose the long ruler.', options: ['Short', 'Long'], answerIndex: 1 }, { id: 'length-4', prompt: 'Choose the short snake.', options: ['Short', 'Long'], answerIndex: 0 }, { id: 'length-5', prompt: 'Choose the long train.', options: ['Short', 'Long'], answerIndex: 1 }] },
+  { id: 'g1-short-long', title: 'Short or Long', description: 'Look at the pictures and choose short or long.', type: 'multiple-choice', difficulty: 'facil', subjectId: 's-english', grade: '1', xpReward: 10, questions: [{ id: 'length-1', prompt: 'Look at the clue and choose the answer.', options: ['Short', 'Long'], answerIndex: 1 }, { id: 'length-2', prompt: 'Look at the clue and choose the answer.', options: ['Short', 'Long'], answerIndex: 0 }, { id: 'length-3', prompt: 'Look at the clue and choose the answer.', options: ['Short', 'Long'], answerIndex: 1 }, { id: 'length-4', prompt: 'Look at the clue and choose the answer.', options: ['Short', 'Long'], answerIndex: 0 }, { id: 'length-5', prompt: 'Look at the clue and choose the answer.', options: ['Short', 'Long'], answerIndex: 1 }] },
   { id: 'g1-food', title: 'Food', description: 'Choose the healthy food.', type: 'multiple-choice', difficulty: 'facil', subjectId: 's-english', grade: '1', xpReward: 10, questions: [{ id: 'food-1', prompt: 'Choose the healthy food.', options: ['Apple', 'Fries', 'Ice cream'], answerIndex: 0 }, { id: 'food-2', prompt: 'Choose the healthy food.', options: ['Burger', 'Broccoli', 'Fries'], answerIndex: 1 }, { id: 'food-3', prompt: 'Choose the healthy food.', options: ['Ice cream', 'Fries', 'Fish'], answerIndex: 2 }] },
   { id: 'g1-pets', title: 'Animals (Pets)', description: 'Match the animal with the correct name.', type: 'image-question', difficulty: 'facil', subjectId: 's-english', grade: '1', xpReward: 10, questions: [{ id: 'pet-cat', prompt: 'Match the animal with the correct name.', image: '/games/cat.png', options: ['Dog', 'Cat', 'Rabbit'], answerIndex: 1 }, { id: 'pet-dog', prompt: 'Match the animal with the correct name.', image: '/games/dog.png', options: ['Dog', 'Cat', 'Bird'], answerIndex: 0 }, { id: 'pet-rabbit', prompt: 'Match the animal with the correct name.', image: '/games/rabbit.png', options: ['Bird', 'Rabbit', 'Dog'], answerIndex: 1 }, { id: 'pet-bird', prompt: 'Match the animal with the correct name.', image: '/games/bird.png', options: ['Cat', 'Dog', 'Bird'], answerIndex: 2 }] },
   { id: 'g1-can', title: "Can / Can't", description: 'Look at the pictures and choose can or can\'t.', type: 'multiple-choice', difficulty: 'facil', subjectId: 's-english', grade: '1', xpReward: 10, questions: [{ id: 'can-1', prompt: 'She can ride a bike.', options: ['Can', "Can't"], answerIndex: 0 }, { id: 'can-2', prompt: "He can't fly.", options: ['Can', "Can't"], answerIndex: 1 }, { id: 'can-3', prompt: 'He can swim.', options: ['Can', "Can't"], answerIndex: 0 }, { id: 'can-4', prompt: "She can't lift a car.", options: ['Can', "Can't"], answerIndex: 1 }, { id: 'can-5', prompt: 'They can play football.', options: ['Can', "Can't"], answerIndex: 0 }] },
@@ -139,7 +139,7 @@ const baseActivities: Activity[] = [
   { id: 'g3-sports', title: "Sports: Can / Can't", description: "Look at the pictures and choose if they can or can't do the sport.", type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '3', xpReward: 15, questions: [{ id: 'sport-1', prompt: 'She can play soccer.', options: ['Can', "Can't"], answerIndex: 0 }, { id: 'sport-2', prompt: 'He can swim.', options: ['Can', "Can't"], answerIndex: 0 }, { id: 'sport-3', prompt: "He can't play tennis.", options: ['Can', "Can't"], answerIndex: 1 }, { id: 'sport-4', prompt: 'She can ride a bike.', options: ['Can', "Can't"], answerIndex: 0 }] },
   { id: 'g3-animals-prepositions', title: 'Animals: Prepositions', description: 'Look at the image and choose the correct option.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '3', xpReward: 15, questions: [{ id: 'scene-cat', prompt: 'Where is the cat?', options: ['On the table.', 'Under the table.', 'In the bowl.'], answerIndex: 0 }, { id: 'scene-dog', prompt: 'Where is the dog?', options: ['On the table.', 'Under the table.', 'Next to the fish tank.'], answerIndex: 1 }, { id: 'scene-fly', prompt: 'The dog ___ fly.', options: ['can', "can't"], answerIndex: 1 }] },
   { id: 'g3-clothes', title: 'Clothes', description: 'Look at the pictures and choose the correct option.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '3', xpReward: 15, questions: [{ id: 'clothes-1', prompt: 'She is wearing a dress.', options: ['A dress', 'Shorts', 'A hoodie'], answerIndex: 0 }, { id: 'clothes-2', prompt: 'He is wearing a hoodie.', options: ['A skirt', 'A hoodie', 'A jacket'], answerIndex: 1 }, { id: 'clothes-3', prompt: 'She is wearing a jacket.', options: ['A jacket', 'A dress', 'Shorts'], answerIndex: 0 }, { id: 'clothes-4', prompt: 'He is wearing shorts.', options: ['A t-shirt', 'A jacket', 'Shorts'], answerIndex: 2 }] },
-  { id: 'g3-food-preferences', title: 'Food: Like / Don\'t Like', description: 'Look at the food and choose if they like it or not.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '3', xpReward: 15, questions: [{ id: 'like-1', prompt: 'He likes vegetables.', options: ['Likes it', "Doesn't like it"], answerIndex: 0 }, { id: 'like-2', prompt: "She doesn't like burgers.", options: ['Likes it', "Doesn't like it"], answerIndex: 1 }, { id: 'like-3', prompt: 'He likes pizza.', options: ['Likes it', "Doesn't like it"], answerIndex: 0 }, { id: 'like-4', prompt: "She doesn't like ice cream.", options: ['Likes it', "Doesn't like it"], answerIndex: 1 }, { id: 'like-5', prompt: 'He likes apples.', options: ['Likes it', "Doesn't like it"], answerIndex: 0 }] },
+  { id: 'g3-food-preferences', title: 'Food: Like / Don\'t Like', description: 'Look at the food and choose if they like it or not.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '3', xpReward: 15, questions: [{ id: 'like-1', prompt: 'Look at the food and choose the answer.', options: ['Likes it', "Doesn't like it"], answerIndex: 0 }, { id: 'like-2', prompt: "She doesn't like burgers.", options: ['Likes it', "Doesn't like it"], answerIndex: 1 }, { id: 'like-3', prompt: 'He likes pizza.', options: ['Likes it', "Doesn't like it"], answerIndex: 0 }, { id: 'like-4', prompt: "She doesn't like ice cream.", options: ['Likes it', "Doesn't like it"], answerIndex: 1 }, { id: 'like-5', prompt: 'He likes apples.', options: ['Likes it', "Doesn't like it"], answerIndex: 0 }] },
   { id: 'g3-body-count', title: 'Parts of the Body: Has Got', description: 'Look at the monsters and complete the sentences.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '3', xpReward: 15, questions: [{ id: 'monster-1', prompt: 'It has got ___ eyes.', options: ['One', 'Two', 'Three'], answerIndex: 1 }, { id: 'monster-2', prompt: "It hasn't got ___ legs.", options: ['Two', 'Four', 'Six'], answerIndex: 0 }, { id: 'monster-3', prompt: 'It has got ___ arms.', options: ['One', 'Two', 'Three'], answerIndex: 2 }] },
   { id: 'g3-beach', title: 'Activities on the Beach', description: "Look at the picture and choose what they want or don't want to do.", type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '3', xpReward: 15, questions: [{ id: 'beach-1', prompt: 'I want to build a sandcastle.', options: ['Want to', "Don't want to"], answerIndex: 0 }, { id: 'beach-2', prompt: "She doesn't want to swim.", options: ['Want to', "Doesn't want to"], answerIndex: 1 }, { id: 'beach-3', prompt: 'He wants to surf.', options: ['Wants to', "Doesn't want to"], answerIndex: 0 }, { id: 'beach-4', prompt: 'We want to play with the ball.', options: ['Want to', "Don't want to"], answerIndex: 0 }, { id: 'beach-5', prompt: "I don't want to sunbathe.", options: ['Want to', "Don't want to"], answerIndex: 1 }] },
 
@@ -164,15 +164,59 @@ export const questionEmojis: Record<string, string> = {
 }
 
 const listeningGames = new Set(['g1-family', 'g4-days'])
-export const activities: Activity[] = baseActivities.map((activity) => ({
-  ...activity,
-  questions: activity.questions.map((question) => ({
-    ...question,
-    prompt: 'Look at the clue and choose the answer.',
-    emoji: questionEmojis[activity.id] ?? '🔎',
-    audioText: listeningGames.has(activity.id) ? question.options?.[question.answerIndex ?? 0] : undefined,
-  })),
-}))
+
+// Each activity keeps its own interaction model; the shared player only supplies
+// the common progress, feedback, and scoring shell.
+const activityTypeOverrides: Record<string, Activity['type']> = {
+  'g1-family': 'image-question',
+  'g1-body': 'match-concepts',
+  'g1-big-small': 'image-question',
+  'g1-short-long': 'image-question',
+  'g1-food': 'image-question',
+  'g1-pets': 'image-question',
+  'g1-can': 'image-question',
+  'g3-subjects': 'image-question',
+  'g3-sports': 'image-question',
+  'g3-animals-prepositions': 'image-question',
+  'g3-clothes': 'image-question',
+  'g3-food-preferences': 'image-question',
+  'g3-body-count': 'image-question',
+  'g3-beach': 'image-question',
+  'g4-subjects': 'image-question',
+  'g4-days': 'multiple-choice',
+  'g4-time': 'image-question',
+  'g4-weather': 'image-question',
+  'g4-is-isnt': 'image-question',
+  'g4-present-simple': 'image-question',
+  'g4-routines': 'order-elements',
+  'g4-present-continuous': 'image-question',
+  'g4-there': 'image-question',
+  'g4-places-town': 'image-question',
+}
+
+export const activities: Activity[] = baseActivities.map((activity) => {
+  const type = activityTypeOverrides[activity.id] ?? activity.type
+  return {
+    ...activity,
+    type,
+    questions: activity.questions.map((question) => ({
+      ...question,
+      prompt: listeningGames.has(activity.id)
+        ? 'Listen and choose the answer.'
+        : type === 'order-elements'
+          ? 'Put the words in the correct order.'
+          : type === 'match-concepts'
+            ? 'Match each word with its picture.'
+            : type === 'image-question'
+              ? 'Look at the clue and choose the answer.'
+              : 'Choose the correct answer.',
+      emoji: questionEmojis[activity.id] ?? '🔎',
+      audioText: listeningGames.has(activity.id)
+        ? question.options?.[question.answerIndex ?? 0]
+        : undefined,
+    })),
+  }
+})
 
 // --- Datos de análisis para el portal del profesor ---
 // Simulados para demostrar la vista de análisis detallado por alumno.
