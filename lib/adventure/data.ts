@@ -122,6 +122,11 @@ export const subjectProgress: Record<string, SubjectProgress[]> = {
   ],
 }
 
+const choiceSets = {
+  grade3Subjects: ['Math', 'English', 'Science', 'Art', 'Music', 'PE', 'History'],
+  grade4Subjects: ['English', 'Math', 'Geography', 'Science', 'Art', 'Music', 'IT', 'History'],
+}
+
 const baseActivities: Activity[] = [
   // Grade 1: seven games, 10 XP each.
   { id: 'g1-family', title: 'Family', description: 'Listen and choose the correct family member.', type: 'image-question', difficulty: 'facil', subjectId: 's-english', grade: '1', xpReward: 10, questions: [
@@ -135,7 +140,7 @@ const baseActivities: Activity[] = [
   { id: 'g1-can', title: "Can / Can't", description: 'Look at the pictures and choose can or can\'t.', type: 'multiple-choice', difficulty: 'facil', subjectId: 's-english', grade: '1', xpReward: 10, questions: [{ id: 'can-1', prompt: 'She can ride a bike.', options: ['Can', "Can't"], answerIndex: 0 }, { id: 'can-2', prompt: "He can't fly.", options: ['Can', "Can't"], answerIndex: 1 }, { id: 'can-3', prompt: 'He can swim.', options: ['Can', "Can't"], answerIndex: 0 }, { id: 'can-4', prompt: "She can't lift a car.", options: ['Can', "Can't"], answerIndex: 1 }, { id: 'can-5', prompt: 'They can play football.', options: ['Can', "Can't"], answerIndex: 0 }] },
 
   // Grade 3: seven games, 15 XP each.
-  { id: 'g3-subjects', title: 'School Subjects', description: 'Look at the images and choose the correct subject.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '3', xpReward: 15, questions: ['Math', 'English', 'Science', 'Art', 'Music', 'PE', 'History'].map((subject, i) => ({ id: `subject-${i}`, prompt: `Choose ${subject}.`, options: [subject, 'English', 'Math'].filter((v, j, a) => a.indexOf(v) === j), answerIndex: 0 })) },
+  { id: 'g3-subjects', title: 'School Subjects', description: 'Look at the images and choose the correct subject.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '3', xpReward: 15, questions: choiceSets.grade3Subjects.map((subject, i) => ({ id: `subject-${i}`, prompt: `Choose ${subject}.`, options: [subject, choiceSets.grade3Subjects[(i + 1) % choiceSets.grade3Subjects.length], choiceSets.grade3Subjects[(i + 2) % choiceSets.grade3Subjects.length]], answerIndex: 0 })) },
   { id: 'g3-sports', title: "Sports: Can / Can't", description: "Look at the pictures and choose if they can or can't do the sport.", type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '3', xpReward: 15, questions: [{ id: 'sport-1', prompt: 'She can play soccer.', options: ['Can', "Can't"], answerIndex: 0 }, { id: 'sport-2', prompt: 'He can swim.', options: ['Can', "Can't"], answerIndex: 0 }, { id: 'sport-3', prompt: "He can't play tennis.", options: ['Can', "Can't"], answerIndex: 1 }, { id: 'sport-4', prompt: 'She can ride a bike.', options: ['Can', "Can't"], answerIndex: 0 }] },
   { id: 'g3-animals-prepositions', title: 'Animals: Prepositions', description: 'Look at the image and choose the correct option.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '3', xpReward: 15, questions: [{ id: 'scene-cat', prompt: 'Where is the cat?', options: ['On the table.', 'Under the table.', 'In the bowl.'], answerIndex: 0 }, { id: 'scene-dog', prompt: 'Where is the dog?', options: ['On the table.', 'Under the table.', 'Next to the fish tank.'], answerIndex: 1 }, { id: 'scene-fly', prompt: 'The dog ___ fly.', options: ['can', "can't"], answerIndex: 1 }] },
   { id: 'g3-clothes', title: 'Clothes', description: 'Look at the pictures and choose the correct option.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '3', xpReward: 15, questions: [{ id: 'clothes-1', prompt: 'She is wearing a dress.', options: ['A dress', 'Shorts', 'A hoodie'], answerIndex: 0 }, { id: 'clothes-2', prompt: 'He is wearing a hoodie.', options: ['A skirt', 'A hoodie', 'A jacket'], answerIndex: 1 }, { id: 'clothes-3', prompt: 'She is wearing a jacket.', options: ['A jacket', 'A dress', 'Shorts'], answerIndex: 0 }, { id: 'clothes-4', prompt: 'He is wearing shorts.', options: ['A t-shirt', 'A jacket', 'Shorts'], answerIndex: 2 }] },
@@ -144,7 +149,7 @@ const baseActivities: Activity[] = [
   { id: 'g3-beach', title: 'Activities on the Beach', description: "Look at the picture and choose what they want or don't want to do.", type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '3', xpReward: 15, questions: [{ id: 'beach-1', prompt: 'I want to build a sandcastle.', options: ['Want to', "Don't want to"], answerIndex: 0 }, { id: 'beach-2', prompt: "She doesn't want to swim.", options: ['Want to', "Doesn't want to"], answerIndex: 1 }, { id: 'beach-3', prompt: 'He wants to surf.', options: ['Wants to', "Doesn't want to"], answerIndex: 0 }, { id: 'beach-4', prompt: 'We want to play with the ball.', options: ['Want to', "Don't want to"], answerIndex: 0 }, { id: 'beach-5', prompt: "I don't want to sunbathe.", options: ['Want to', "Don't want to"], answerIndex: 1 }] },
 
   // Grade 4: eleven games; the last one awards 20 XP.
-  { id: 'g4-subjects', title: 'School Subjects', description: 'Look at the pictures and choose the correct subject.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '4', xpReward: 15, questions: ['English', 'Math', 'Geography', 'Science', 'Art', 'Music', 'IT', 'History'].map((subject, i) => ({ id: `g4-subject-${i}`, prompt: `Choose ${subject}.`, options: [subject, 'English', 'Math'].filter((v, j, a) => a.indexOf(v) === j), answerIndex: 0 })) },
+  { id: 'g4-subjects', title: 'School Subjects', description: 'Look at the pictures and choose the correct subject.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '4', xpReward: 15, questions: choiceSets.grade4Subjects.map((subject, i) => ({ id: `g4-subject-${i}`, prompt: `Choose ${subject}.`, options: [subject, choiceSets.grade4Subjects[(i + 1) % choiceSets.grade4Subjects.length], choiceSets.grade4Subjects[(i + 2) % choiceSets.grade4Subjects.length]], answerIndex: 0 })) },
   { id: 'g4-days', title: 'Days of the Week', description: 'Listen and choose the correct day.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '4', xpReward: 15, questions: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map((day, i) => ({ id: `day-${i}`, prompt: `It's ${day}.`, options: [day, 'Monday', 'Sunday'].filter((v, j, a) => a.indexOf(v) === j), answerIndex: 0 })) },
   { id: 'g4-time', title: 'The Time', description: 'What time is it? Choose the correct option.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '4', xpReward: 15, questions: [{ id: 'time-1', prompt: "It's three o'clock.", options: ["It's three o'clock", "It's nine o'clock", "It's six o'clock"], answerIndex: 0 }, { id: 'time-2', prompt: "It's nine o'clock.", options: ["It's three o'clock", "It's nine o'clock", "It's six o'clock"], answerIndex: 1 }, { id: 'time-3', prompt: "It's six o'clock.", options: ["It's three o'clock", "It's nine o'clock", "It's six o'clock"], answerIndex: 2 }, { id: 'time-4', prompt: "It's one o'clock.", options: ["It's one o'clock", "It's five o'clock", "It's ten o'clock"], answerIndex: 0 }, { id: 'time-5', prompt: "It's ten o'clock.", options: ["It's one o'clock", "It's five o'clock", "It's ten o'clock"], answerIndex: 2 }] },
   { id: 'g4-have-has', title: 'Have / Has Got', description: 'Look at the picture and complete the sentences.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '4', xpReward: 15, questions: [{ id: 'have-1', prompt: 'She ___ a backpack.', options: ['has got', 'have got'], answerIndex: 0 }, { id: 'have-2', prompt: 'I ___ a pencil case.', options: ['has got', 'have got'], answerIndex: 1 }, { id: 'have-3', prompt: 'They ___ books.', options: ['has got', 'have got'], answerIndex: 1 }, { id: 'have-4', prompt: 'He ___ a water bottle.', options: ['has got', 'have got'], answerIndex: 0 }] },
@@ -161,6 +166,33 @@ export const questionEmojis: Record<string, string> = {
   'g1-family': '👨‍👩‍👧', 'g1-body': '🧍', 'g1-big-small': '📏', 'g1-short-long': '📐', 'g1-food': '🍎', 'g1-pets': '🐶', 'g1-can': '🏃',
   'g3-subjects': '🎨', 'g3-sports': '⚽', 'g3-animals-prepositions': '🐱', 'g3-clothes': '👕', 'g3-food-preferences': '🍔', 'g3-body-count': '👁️', 'g3-beach': '🏖️',
   'g4-subjects': '🎓', 'g4-days': '📅', 'g4-time': '🕒', 'g4-have-has': '🎒', 'g4-weather': '☀️', 'g4-is-isnt': '🏫', 'g4-present-simple': '⚽', 'g4-routines': '⏰', 'g4-present-continuous': '🏊', 'g4-there': '🏠', 'g4-places-town': '🗺️',
+}
+
+// Every round has its own visual clue so the learner solves the question from
+// the picture, not from an answer accidentally repeated in the prompt.
+const questionClues: Record<string, string> = {
+  'family-1': '👩', 'family-2': '👨', 'family-3': '👧', 'family-4': '👦', 'family-5': '👵',
+  'body-1': '🧍', 'size-1': '🐘', 'size-2': '🚗', 'size-3': '⚽', 'size-4': '🧸', 'size-5': '🌳',
+  'length-1': '✏️', 'length-2': '📏', 'length-3': '🦒', 'length-4': '🐜', 'length-5': '🪢',
+  'food-1': '🍎', 'food-2': '🥦', 'food-3': '🐟', 'pet-cat': '🐱', 'pet-dog': '🐶', 'pet-rabbit': '🐰', 'pet-bird': '🐦',
+  'can-1': '🚲', 'can-2': '🪽', 'can-3': '🏊', 'can-4': '🚗', 'can-5': '⚽',
+  'sport-1': '⚽', 'sport-2': '🏊', 'sport-3': '🎾', 'sport-4': '🚲',
+  'scene-cat': '🐱', 'scene-dog': '🐶', 'scene-fly': '🐶',
+  'clothes-1': '👗', 'clothes-2': '🧥', 'clothes-3': '🧥', 'clothes-4': '🩳',
+  'like-1': '🥦', 'like-2': '🍔', 'like-3': '🍕', 'like-4': '🍦', 'like-5': '🍎',
+  'monster-1': '👁️', 'monster-2': '🦵', 'monster-3': '💪',
+  'beach-1': '🏖️', 'beach-2': '🏊', 'beach-3': '🏄', 'beach-4': '🏐', 'beach-5': '☀️',
+  'g4-subject-0': '🇬🇧', 'g4-subject-1': '➗', 'g4-subject-2': '🗺️', 'g4-subject-3': '🔬', 'g4-subject-4': '🎨', 'g4-subject-5': '🎵', 'g4-subject-6': '💻', 'g4-subject-7': '🏛️',
+  'day-0': '🌙', 'day-1': '🗓️', 'day-2': '📚', 'day-3': '⚽', 'day-4': '🎉', 'day-5': '🌞', 'day-6': '⛪',
+  'time-1': '🕒', 'time-2': '🕘', 'time-3': '🕕', 'time-4': '🕐', 'time-5': '🕙',
+  'have-1': '🎒', 'have-2': '✏️', 'have-3': '📚', 'have-4': '🧴',
+  'weather-0': '☀️', 'weather-1': '🌧️', 'weather-2': '☁️', 'weather-3': '❄️', 'weather-4': '💨', 'weather-5': '⛈️',
+  'place-park': '🌳', 'place-school': '🏫', 'place-city': '🏙️',
+  'present-1': '⚽', 'present-2': '📖', 'present-3': '🏃', 'present-4': '📚', 'present-5': '🎓',
+  'routine-1': '⏰', 'routine-2': '🪥', 'routine-3': '🚌', 'routine-4': '📝',
+  'continuous-1': '🏊', 'continuous-2': '📖', 'continuous-3': '⚽', 'continuous-4': '🍳', 'continuous-5': '🎤',
+  'there-1': '🛋️', 'there-2': '🪑', 'there-3': '📺', 'there-4': '🐱',
+  'town-library': '📚', 'town-hospital': '🏥', 'town-school': '🏫', 'town-park': '🌳', 'town-bus': '🚌',
 }
 
 const listeningGames = new Set(['g1-family', 'g4-days'])
@@ -210,7 +242,7 @@ export const activities: Activity[] = baseActivities.map((activity) => {
           : type === 'match-concepts'
             ? 'Match each word with its picture.'
             : 'Look at the clue and choose the answer.',
-      emoji: questionEmojis[activity.id] ?? '🔎',
+      emoji: questionClues[question.id] ?? questionEmojis[activity.id] ?? '🔎',
       audioText: isListening ? question.options?.[question.answerIndex ?? 0] : undefined,
     })),
   }

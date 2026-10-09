@@ -50,7 +50,7 @@ export function ChoiceQuestion({
       )}
       {question.audioText && (
         <button type="button" onClick={speakClue} className="mx-auto rounded-full border border-border px-4 py-2 font-bold">
-          Escuchar pista
+          Listen to the clue
         </button>
       )}
       <h2 className="text-balance text-center font-display text-2xl font-extrabold text-foreground">
