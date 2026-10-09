@@ -57,7 +57,7 @@ export function GamePlayer({ activity }: { activity: Activity }) {
   }, [timeLeft, isTimed, done])
 
   function finish(finalCorrect: number) {
-    if (finishedRef.current) return
+    if (finishedRef.current || finalCorrect < total) return
     finishedRef.current = true
     const timeSec = Math.round((Date.now() - startRef.current) / 1000)
     const { score, xpEarned } = scoreActivity({
@@ -142,7 +142,16 @@ export function GamePlayer({ activity }: { activity: Activity }) {
   }
 
   function next() {
-    const nextCorrect = correctCount + (lastCorrect ? 1 : 0)
+    if (!lastCorrect) {
+      setSelected(null)
+      setTextValue('')
+      setOrderChosen([])
+      setAnswered(false)
+      setLastCorrect(false)
+      return
+    }
+
+    const nextCorrect = correctCount
     if (index + 1 >= total) {
       finish(nextCorrect)
       return
@@ -278,7 +287,7 @@ export function GamePlayer({ activity }: { activity: Activity }) {
                   lastCorrect ? 'text-success' : 'text-destructive',
                 )}
               >
-                {lastCorrect ? '¡Correcto! 🎉' : '¡Casi! Sigue intentando 💪'}
+                {lastCorrect ? 'Great job!' : 'Try again!'}
               </p>
             )}
           </div>
@@ -299,7 +308,7 @@ export function GamePlayer({ activity }: { activity: Activity }) {
               onClick={next}
               className="inline-flex h-12 items-center gap-2 rounded-xl bg-primary px-8 font-extrabold text-primary-foreground"
             >
-              {index + 1 >= total ? 'Finalizar' : 'Continuar'}
+              {!lastCorrect ? 'Try again!' : index + 1 >= total ? 'Finish' : 'Continue'}
               <ArrowRight className="size-5" />
             </button>
           ) : (

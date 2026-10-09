@@ -17,10 +17,14 @@ export function ChoiceQuestion({
   answered: boolean
   onSelect: (index: number) => void
 }) {
-  const optionOrder = useMemo(
-    () => (question.options ?? []).map((_, index) => index).sort(() => Math.random() - 0.5),
-    [question.id],
-  )
+  const optionOrder = useMemo(() => {
+    const order = (question.options ?? []).map((_, index) => index)
+    for (let index = order.length - 1; index > 0; index -= 1) {
+      const swapIndex = Math.floor(Math.random() * (index + 1))
+      ;[order[index], order[swapIndex]] = [order[swapIndex], order[index]]
+    }
+    return order
+  }, [question.id])
 
   function speakClue() {
     if (question.audioText && typeof window !== 'undefined' && 'speechSynthesis' in window) {
@@ -63,7 +67,7 @@ export function ChoiceQuestion({
           const isSelected = originalIndex === selected
           return (
             <button
-              key={option}
+              key={`${originalIndex}-${option}`}
               type="button"
               disabled={answered}
               onClick={() => onSelect(originalIndex)}
