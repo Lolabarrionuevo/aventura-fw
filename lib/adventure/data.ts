@@ -196,24 +196,22 @@ const activityTypeOverrides: Record<string, Activity['type']> = {
 
 export const activities: Activity[] = baseActivities.map((activity) => {
   const type = activityTypeOverrides[activity.id] ?? activity.type
+  const isListening = listeningGames.has(activity.id)
   return {
     ...activity,
     type,
     questions: activity.questions.map((question) => ({
       ...question,
-      prompt: listeningGames.has(activity.id)
+      // Keep every prompt neutral: the clue, not the sentence, identifies the answer.
+      prompt: isListening
         ? 'Listen and choose the answer.'
         : type === 'order-elements'
           ? 'Put the words in the correct order.'
           : type === 'match-concepts'
             ? 'Match each word with its picture.'
-            : type === 'image-question'
-              ? 'Look at the clue and choose the answer.'
-              : 'Choose the correct answer.',
+            : 'Look at the clue and choose the answer.',
       emoji: questionEmojis[activity.id] ?? '🔎',
-      audioText: listeningGames.has(activity.id)
-        ? question.options?.[question.answerIndex ?? 0]
-        : undefined,
+      audioText: isListening ? question.options?.[question.answerIndex ?? 0] : undefined,
     })),
   }
 })
