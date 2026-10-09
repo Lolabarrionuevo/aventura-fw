@@ -1,0 +1,189 @@
+// Modelo de dominio de ADVENTURE.
+// Esta capa es independiente de la persistencia: hoy usa datos simulados
+// (ver ./data.ts) y mañana puede conectarse a Neon sin cambiar la UI.
+
+export type Role = 'alumno' | 'profesor' | 'admin'
+
+export type Grade = '1' | '2' | '3' | '4' | '5' | '6'
+
+export interface User {
+  id: string
+  name: string
+  username: string
+  role: Role
+  avatar: string
+}
+
+export interface Student extends User {
+  role: 'alumno'
+  courseId: string
+  grade: Grade
+  level: number
+  xp: number
+  streakDays: number
+  badgeIds: string[]
+}
+
+export interface Teacher extends User {
+  role: 'profesor'
+  courseIds: string[]
+  grade: Grade
+}
+
+export interface Course {
+  id: string
+  name: string
+  grade: string
+  teacherId: string
+  color: string
+}
+
+export interface Subject {
+  id: string
+  name: string
+  emoji: string
+  courseId: string
+}
+
+/** Tipos de juego/actividad soportados. */
+export type GameType =
+  | 'multiple-choice'
+  | 'true-false'
+  | 'complete-word'
+  | 'match-concepts'
+  | 'order-elements'
+  | 'image-question'
+  | 'memory'
+  | 'timed-quiz'
+
+export type Difficulty = 'facil' | 'medio' | 'dificil'
+
+export interface Question {
+  id: string
+  /** Enunciado principal. */
+  prompt: string
+  /** Traducción o pista bilingüe opcional. */
+  hint?: string
+  /** Imagen opcional (para image-question). */
+  image?: string
+  /** Opciones para multiple-choice / image-question / true-false. */
+  options?: string[]
+  /** Índice de la opción correcta (o respuesta booleana como 0/1). */
+  answerIndex?: number
+  /** Respuesta textual esperada (complete-word). */
+  answer?: string
+  /** Pares para match-concepts (left ↔ right). */
+  pairs?: { left: string; right: string }[]
+  /** Elementos a ordenar (order-elements), en orden correcto. */
+  sequence?: string[]
+}
+
+export interface Activity {
+  id: string
+  title: string
+  description: string
+  type: GameType
+  difficulty: Difficulty
+  subjectId: string
+  grade: Grade
+  xpReward: number
+  /** Duración sugerida / límite en segundos para timed-quiz. */
+  timeLimitSec?: number
+  questions: Question[]
+  /** Marca actividades creadas por el profesor (vs. las preexistentes). */
+  createdByTeacher?: boolean
+}
+
+export interface Badge {
+  id: string
+  name: string
+  description: string
+  emoji: string
+}
+
+export interface Achievement {
+  id: string
+  name: string
+  description: string
+  emoji: string
+  goal: number
+}
+
+export interface ActivityResult {
+  id: string
+  studentId: string
+  activityId: string
+  correctCount: number
+  totalCount: number
+  timeSec: number
+  score: number
+  xpEarned: number
+  date: string
+}
+
+export interface SubjectProgress {
+  subjectId: string
+  progressPct: number
+  level: number
+  activitiesTotal: number
+  activitiesCompleted: number
+  xpEarned: number
+}
+
+/** Habilidades globales evaluadas en inglés. */
+export type Skill = 'Vocabulary' | 'Grammar' | 'Reading' | 'Listening' | 'Writing'
+
+export type SkillStatus = 'dominado' | 'en-progreso' | 'necesita-refuerzo'
+
+export interface SkillResult {
+  skill: Skill
+  pct: number
+  status: SkillStatus
+}
+
+/** Tema concreto dentro de una habilidad (ej. "Present Simple"). */
+export interface TopicResult {
+  topic: string
+  skill: Skill
+  pct: number
+  status: SkillStatus
+}
+
+/** Punto en la evolución temporal del rendimiento. */
+export interface PerformancePoint {
+  date: string
+  score: number
+}
+
+/** Resumen de una actividad realizada por un alumno. */
+export interface ActivitySummary {
+  activityId: string
+  title: string
+  score: number
+  correctCount: number
+  totalCount: number
+  timeSec: number
+  date: string
+  status: 'completada' | 'pendiente'
+}
+
+/** Análisis completo de un alumno para el portal del profesor. */
+export interface StudentAnalysis {
+  studentId: string
+  xp: number
+  level: number
+  streakDays: number
+  overallProgressPct: number
+  activitiesCompleted: number
+  activitiesPending: number
+  correctPct: number
+  incorrectPct: number
+  totalAttempts: number
+  avgTimeSec: number
+  performance: PerformancePoint[]
+  skills: SkillResult[]
+  topics: TopicResult[]
+  recentActivities: ActivitySummary[]
+  weakTopics: TopicResult[]
+  recommendation: string
+}
