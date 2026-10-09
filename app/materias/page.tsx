@@ -66,7 +66,7 @@ export default function MateriasPage() {
           return (
             <Link
               key={activity.id}
-              href={`/actividad/${activity.id}`}
+              href={`/games/${student.grade}/${activity.id}`}
               className="group flex items-center gap-4 rounded-3xl border border-border bg-card p-5 transition-all hover:-translate-y-1 hover:shadow-lg"
             >
               <span className="grid size-14 shrink-0 place-items-center rounded-2xl bg-muted text-3xl">

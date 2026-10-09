@@ -122,7 +122,7 @@ export const subjectProgress: Record<string, SubjectProgress[]> = {
   ],
 }
 
-export const activities: Activity[] = [
+const baseActivities: Activity[] = [
   // Grade 1: seven games, 10 XP each.
   { id: 'g1-family', title: 'Family', description: 'Listen and choose the correct family member.', type: 'image-question', difficulty: 'facil', subjectId: 's-english', grade: '1', xpReward: 10, questions: [
     { id: 'family-1', prompt: 'Listen and choose: mum.', image: '/games/family-mum.png', options: ['Mum', 'Dad', 'Sister'], answerIndex: 0 }, { id: 'family-2', prompt: 'Listen and choose: dad.', image: '/games/family-dad.png', options: ['Brother', 'Dad', 'Grandma'], answerIndex: 1 }, { id: 'family-3', prompt: 'Listen and choose: sister.', image: '/games/family-sister.png', options: ['Sister', 'Auntie', 'Grandpa'], answerIndex: 0 }, { id: 'family-4', prompt: 'Listen and choose: brother.', image: '/games/family-brother.png', options: ['Grandpa', 'Brother', 'Mum'], answerIndex: 1 }, { id: 'family-5', prompt: 'Listen and choose: grandma.', image: '/games/family-grandma.png', options: ['Grandma', 'Dad', 'Auntie'], answerIndex: 0 },
@@ -156,6 +156,23 @@ export const activities: Activity[] = [
   { id: 'g4-there', title: 'There Is / There Are', description: 'Look at the picture and complete the sentences.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '4', xpReward: 15, questions: [{ id: 'there-1', prompt: 'There ___ a sofa.', options: ['is', 'are'], answerIndex: 0 }, { id: 'there-2', prompt: 'There ___ two chairs.', options: ['is', 'are'], answerIndex: 1 }, { id: 'there-3', prompt: 'There ___ a TV.', options: ['is', 'are'], answerIndex: 0 }, { id: 'there-4', prompt: 'There ___ a cat.', options: ['is', 'are'], answerIndex: 0 }] },
   { id: 'g4-places-town', title: 'Places in Town / City', description: 'Look at the map and choose the correct place.', type: 'multiple-choice', difficulty: 'dificil', subjectId: 's-english', grade: '4', xpReward: 20, questions: [{ id: 'town-library', prompt: 'Where is the library?', options: ['Next to the park', 'In front of the school', 'Opposite the hospital'], answerIndex: 0 }, { id: 'town-hospital', prompt: 'Where is the hospital?', options: ['Next to the park', 'In front of the school', 'Opposite the library'], answerIndex: 2 }, { id: 'town-school', prompt: 'Where is the school?', options: ['Next to the supermarket', 'Opposite the hospital', 'Next to the bus station'], answerIndex: 0 }, { id: 'town-park', prompt: 'Where is the park?', options: ['Next to the library', 'In front of the school', 'Opposite the supermarket'], answerIndex: 0 }, { id: 'town-bus', prompt: 'Where is the bus station?', options: ['Next to the school', 'Opposite the park', 'In front of the hospital'], answerIndex: 0 }] },
 ]
+
+export const questionEmojis: Record<string, string> = {
+  'g1-family': '👨‍👩‍👧', 'g1-body': '🧍', 'g1-big-small': '📏', 'g1-short-long': '📐', 'g1-food': '🍎', 'g1-pets': '🐶', 'g1-can': '🏃',
+  'g3-subjects': '🎨', 'g3-sports': '⚽', 'g3-animals-prepositions': '🐱', 'g3-clothes': '👕', 'g3-food-preferences': '🍔', 'g3-body-count': '👁️', 'g3-beach': '🏖️',
+  'g4-subjects': '🎓', 'g4-days': '📅', 'g4-time': '🕒', 'g4-have-has': '🎒', 'g4-weather': '☀️', 'g4-is-isnt': '🏫', 'g4-present-simple': '⚽', 'g4-routines': '⏰', 'g4-present-continuous': '🏊', 'g4-there': '🏠', 'g4-places-town': '🗺️',
+}
+
+const listeningGames = new Set(['g1-family', 'g4-days'])
+export const activities: Activity[] = baseActivities.map((activity) => ({
+  ...activity,
+  questions: activity.questions.map((question) => ({
+    ...question,
+    prompt: 'Look at the clue and choose the answer.',
+    emoji: questionEmojis[activity.id] ?? '🔎',
+    audioText: listeningGames.has(activity.id) ? question.options?.[question.answerIndex ?? 0] : undefined,
+  })),
+}))
 
 // --- Datos de análisis para el portal del profesor ---
 // Simulados para demostrar la vista de análisis detallado por alumno.

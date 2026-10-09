@@ -154,7 +154,7 @@ export default function DashboardPage() {
                   </div>
                 </div>
                 <Link
-                  href={`/actividad/${dailyChallenge.id}`}
+                  href={`/games/${student.grade}/${dailyChallenge.id}`}
                   className="inline-flex h-10 shrink-0 items-center gap-1.5 rounded-xl bg-accent px-4 font-extrabold text-accent-foreground transition-colors hover:bg-accent/90"
                 >
                   Jugar

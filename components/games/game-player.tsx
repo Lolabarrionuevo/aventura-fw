@@ -226,6 +226,7 @@ export function GamePlayer({ activity }: { activity: Activity }) {
             selected={selected}
             answered={answered}
             onSelect={commitChoice}
+            key={question.id}
           />
         )}
 

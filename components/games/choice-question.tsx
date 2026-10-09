@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { useMemo } from 'react'
 import { Check, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { Question } from '@/lib/adventure/types'
@@ -16,20 +17,38 @@ export function ChoiceQuestion({
   answered: boolean
   onSelect: (index: number) => void
 }) {
+  const optionOrder = useMemo(
+    () => (question.options ?? []).map((_, index) => index).sort(() => Math.random() - 0.5),
+    [question.id],
+  )
+
+  function speakClue() {
+    if (question.audioText && typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      window.speechSynthesis.cancel()
+      window.speechSynthesis.speak(new SpeechSynthesisUtterance(question.audioText))
+    }
+  }
+
   return (
     <div className="flex flex-col gap-5">
-      {question.image && (
+      {(question.image || question.emoji) && (
         <div className="mx-auto grid size-40 place-items-center overflow-hidden rounded-3xl bg-muted">
-          <Image
-            src={question.image || '/placeholder.svg'}
-            alt="Imagen de la pregunta"
-            width={160}
-            height={160}
-            className="size-full object-contain p-2"
-          />
+          {question.image ? (
+            <Image
+              src={question.image}
+              alt="Imagen de la pregunta"
+              width={160}
+              height={160}
+              className="size-full object-contain p-2"
+            />
+          ) : <span className="text-7xl" aria-hidden="true">{question.emoji}</span>}
         </div>
       )}
-
+      {question.audioText && (
+        <button type="button" onClick={speakClue} className="mx-auto rounded-full border border-border px-4 py-2 font-bold">
+          Escuchar pista
+        </button>
+      )}
       <h2 className="text-balance text-center font-display text-2xl font-extrabold text-foreground">
         {question.prompt}
       </h2>
@@ -38,15 +57,16 @@ export function ChoiceQuestion({
       )}
 
       <div className="grid gap-3 sm:grid-cols-2">
-        {question.options?.map((option, i) => {
-          const isCorrect = i === question.answerIndex
-          const isSelected = i === selected
+        {optionOrder.map((originalIndex) => {
+          const option = question.options?.[originalIndex] ?? ''
+          const isCorrect = originalIndex === question.answerIndex
+          const isSelected = originalIndex === selected
           return (
             <button
               key={option}
               type="button"
               disabled={answered}
-              onClick={() => onSelect(i)}
+              onClick={() => onSelect(originalIndex)}
               className={cn(
                 'flex items-center justify-between gap-2 rounded-2xl border-2 px-5 py-4 text-left text-lg font-bold transition-all',
                 !answered &&

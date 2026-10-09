@@ -70,6 +70,9 @@ export interface Question {
   options?: string[]
   /** Índice de la opción correcta (o respuesta booleana como 0/1). */
   answerIndex?: number
+  /** Visual/audio clue kept separate from the neutral prompt. */
+  emoji?: string
+  audioText?: string
   /** Respuesta textual esperada (complete-word). */
   answer?: string
   /** Pares para match-concepts (left ↔ right). */
