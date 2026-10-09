@@ -5,7 +5,8 @@ import { Zap, ChevronRight } from 'lucide-react'
 import { AppShell } from '@/components/app-shell'
 import { ProgressBar } from '@/components/progress-bar'
 import { useSession } from '@/components/session-provider'
-import { subjects, subjectProgress, getActivitiesForSubject, getActivitiesForGrade } from '@/lib/adventure/data'
+import { subjects, getActivitiesForSubject, getActivitiesForGrade } from '@/lib/adventure/data'
+import { getStoredActivityResults } from '@/lib/adventure/gamification'
 import {
   GAME_TYPE_META,
   difficultyLabel,
@@ -28,8 +29,8 @@ export default function MateriasPage() {
     (a) => a.createdByTeacher && !subjectActivities.some((sa) => sa.id === a.id),
   )
   const activities = [...subjectActivities, ...teacherActivities]
-  const progress = subjectProgress[student.id]?.[0]
-  const progressPct = progress?.progressPct ?? 0
+  const completedResults = getStoredActivityResults(student.id)
+  const progressPct = activities.length ? Math.round((completedResults.filter((result) => activities.some((activity) => activity.id === result.activityId)).length / activities.length) * 100) : 0
 
   return (
     <AppShell>
@@ -44,7 +45,7 @@ export default function MateriasPage() {
               {english.name}
             </h1>
             <p className="text-sm text-muted-foreground">
-              Nivel {progress?.level ?? levelFromXp(student.xp)} · {activities.length} actividades
+              Nivel {levelFromXp(student.xp)} · {activities.length} actividades
             </p>
           </div>
         </div>

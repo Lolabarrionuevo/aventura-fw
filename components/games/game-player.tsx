@@ -13,7 +13,8 @@ import { OrderQuestion } from './order-question'
 import { MatchQuestion } from './match-question'
 import { MemoryQuestion } from './memory-question'
 import { ActivityResultScreen } from './activity-result'
-import { scoreActivity } from '@/lib/adventure/gamification'
+import { ACTIVITY_RESULTS_KEY, scoreActivity } from '@/lib/adventure/gamification'
+import { badges } from '@/lib/adventure/data'
 import type { Activity } from '@/lib/adventure/types'
 
 export function GamePlayer({ activity }: { activity: Activity }) {
@@ -66,12 +67,34 @@ export function GamePlayer({ activity }: { activity: Activity }) {
       timeLimitSec: activity.timeLimitSec,
       baseXpReward: activity.xpReward,
     })
-    const rewardKey = `adventure-reward:${student.id}:${activity.id}`
-    const alreadyRewarded = localStorage.getItem(rewardKey) === '1'
-    const awardedXp = alreadyRewarded ? 0 : xpEarned
-    if (!alreadyRewarded) localStorage.setItem(rewardKey, '1')
-    if (!alreadyRewarded && finalCorrect === total) setCelebrate(true)
-    setStudent({ ...student, xp: student.xp + awardedXp })
+    const results = JSON.parse(localStorage.getItem(ACTIVITY_RESULTS_KEY) ?? '[]') as Array<{
+      studentId: string
+      activityId: string
+      score: number
+      xpEarned: number
+      completedAt: string
+    }>
+    const alreadyCompleted = results.some(
+      (item) => item.studentId === student.id && item.activityId === activity.id,
+    )
+    const awardedXp = alreadyCompleted ? 0 : xpEarned
+    if (!alreadyCompleted) {
+      results.push({
+        studentId: student.id,
+        activityId: activity.id,
+        score,
+        xpEarned,
+        completedAt: new Date().toISOString(),
+      })
+      localStorage.setItem(ACTIVITY_RESULTS_KEY, JSON.stringify(results))
+    }
+    const nextBadgeIds = new Set(student.badgeIds)
+    if (!alreadyCompleted && results.filter((item) => item.studentId === student.id).length === 1) {
+      nextBadgeIds.add('b-first')
+    }
+    if (!alreadyCompleted && finalCorrect === total) nextBadgeIds.add('b-perfect')
+    if (!alreadyCompleted && finalCorrect === total) setCelebrate(true)
+    setStudent({ ...student, xp: student.xp + awardedXp, badgeIds: [...nextBadgeIds] })
     setResult({ score, xpEarned: awardedXp, timeSec })
     setDone(true)
   }
@@ -114,7 +137,7 @@ export function GamePlayer({ activity }: { activity: Activity }) {
   }
 
   function next() {
-    const nextCorrect = correctCount
+    const nextCorrect = correctCount + (lastCorrect ? 1 : 0)
     if (index + 1 >= total) {
       finish(nextCorrect)
       return

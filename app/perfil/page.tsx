@@ -8,7 +8,7 @@ import { Avatar } from '@/components/avatar'
 import { ProgressBar } from '@/components/progress-bar'
 import { clearSession, useSession } from '@/components/session-provider'
 import { courses, getBadge, subjectProgress } from '@/lib/adventure/data'
-import { levelFromXp, levelProgressPct, xpToNextLevel } from '@/lib/adventure/gamification'
+import { getStoredActivityResults, levelFromXp, levelProgressPct, xpToNextLevel } from '@/lib/adventure/gamification'
 import { cn } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/button'
 
@@ -17,7 +17,9 @@ export default function PerfilPage() {
   const { student } = useSession()
   const level = levelFromXp(student.xp)
   const course = courses.find((c) => c.id === student.courseId)
+  const completedResults = getStoredActivityResults(student.id)
   const progress = subjectProgress[student.id]?.[0]
+  const liveProgress = progress ? { ...progress, activitiesCompleted: completedResults.length, progressPct: Math.min(100, Math.round((completedResults.length / Math.max(progress.activitiesTotal, 1)) * 100)), xpEarned: student.xp } : undefined
 
   return (
     <AppShell>
@@ -65,7 +67,7 @@ export default function PerfilPage() {
           <h2 className="mb-4 font-display text-lg font-extrabold text-card-foreground">
             Rendimiento en Inglés
           </h2>
-          {progress ? (
+          {liveProgress ? (
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-3 rounded-2xl bg-success/10 p-3">
                 <TrendingUp className="size-5 text-success" />
@@ -84,7 +86,7 @@ export default function PerfilPage() {
               <div>
                 <div className="mb-1 flex justify-between text-sm font-bold">
                   <span className="text-muted-foreground">Progreso general</span>
-                  <span className="text-foreground">{progress.progressPct}%</span>
+                  <span className="text-foreground">{liveProgress.progressPct}%</span>
                 </div>
                 <ProgressBar value={progress.progressPct} label="Progreso general" />
               </div>

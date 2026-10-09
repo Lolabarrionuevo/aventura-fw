@@ -270,6 +270,61 @@ export const activities: Activity[] = [
     ],
   },
   {
+    id: 'demo-animal',
+    title: 'Tap the Animal',
+    description: 'Listen carefully and tap the right animal.',
+    type: 'image-question',
+    difficulty: 'facil',
+    subjectId: 's-english',
+    grade: '1',
+    xpReward: 10,
+    questions: [{ id: 'q1', prompt: 'Tap the dog!', image: '/games/cat.png', options: ['Cat', 'Dog', 'Bird'], answerIndex: 1 }],
+  },
+  {
+    id: 'demo-colors',
+    title: 'Match the Colors',
+    description: 'Match each object with its color.',
+    type: 'match-concepts',
+    difficulty: 'facil',
+    subjectId: 's-english',
+    grade: '1',
+    xpReward: 10,
+    questions: [{ id: 'q1', prompt: 'Match each object with its color.', pairs: [{ left: 'Apple', right: 'Red' }, { left: 'Kite', right: 'Blue' }, { left: 'Sun', right: 'Yellow' }] }],
+  },
+  {
+    id: 'demo-sentence',
+    title: 'Build the Sentence',
+    description: 'Put the words in the correct order.',
+    type: 'order-elements',
+    difficulty: 'medio',
+    subjectId: 's-english',
+    grade: '3',
+    xpReward: 15,
+    questions: [{ id: 'q1', prompt: 'Build: She is riding a bike.', sequence: ['She', 'is', 'riding', 'a bike', 'boy'] }],
+  },
+  {
+    id: 'demo-detective',
+    title: 'Picture Detective',
+    description: 'Look closely at the room and answer the question.',
+    type: 'image-question',
+    difficulty: 'medio',
+    subjectId: 's-english',
+    grade: '3',
+    xpReward: 15,
+    questions: [{ id: 'q1', prompt: 'Where is the ball?', image: '/games/apple.png', options: ['The ball is under the bed.', 'The ball is under the desk.', 'The ball is under the chair.'], answerIndex: 1 }],
+  },
+  {
+    id: 'demo-read',
+    title: 'Read & Discover',
+    description: 'Read the short text and discover the answer.',
+    type: 'multiple-choice',
+    difficulty: 'dificil',
+    subjectId: 's-english',
+    grade: '5',
+    xpReward: 20,
+    questions: [{ id: 'q1', prompt: 'Tom and Mia are in the park. They find a strange map behind a tree. Where could it lead? What do they find?', image: '/games/apple.png', options: ['A map.', 'A treasure chest.', 'A backpack.'], answerIndex: 0 }],
+  },
+  {
     id: 'a-8',
     title: 'Quiz contra reloj',
     description: 'Responde todo lo que puedas antes de que acabe el tiempo.',
@@ -632,8 +687,16 @@ export function getActivitiesForGrade(grade: Grade): Activity[] {
   const isEarlyGrade = grade === '1' || grade === '2'
   const isAdvancedGrade = grade === '5' || grade === '6'
 
+  const gradeGroup = isEarlyGrade ? 'early' : isAdvancedGrade ? 'advanced' : 'middle'
   return activities
-    .filter((activity) => !isEarlyGrade || activity.difficulty !== 'dificil')
+    .filter((activity) => {
+      const activityGroup = activity.grade === '1' || activity.grade === '2'
+        ? 'early'
+        : activity.grade === '5' || activity.grade === '6'
+          ? 'advanced'
+          : 'middle'
+      return activityGroup === gradeGroup && (!isEarlyGrade || activity.difficulty !== 'dificil')
+    })
     .map((activity) => ({
       ...activity,
       grade,

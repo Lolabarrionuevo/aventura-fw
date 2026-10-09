@@ -3,6 +3,26 @@
 /** XP acumulado necesario para alcanzar cada nivel. Curva creciente. */
 export const XP_PER_LEVEL = 300
 
+export const ACTIVITY_RESULTS_KEY = 'adventure-activity-results'
+
+export interface StoredActivityResult {
+  studentId: string
+  activityId: string
+  score: number
+  xpEarned: number
+  completedAt: string
+}
+
+export function getStoredActivityResults(studentId: string): StoredActivityResult[] {
+  if (typeof window === 'undefined') return []
+  try {
+    const all = JSON.parse(localStorage.getItem(ACTIVITY_RESULTS_KEY) ?? '[]') as StoredActivityResult[]
+    return all.filter((result) => result.studentId === studentId)
+  } catch {
+    return []
+  }
+}
+
 export function levelFromXp(xp: number): number {
   return Math.floor(xp / XP_PER_LEVEL) + 1
 }

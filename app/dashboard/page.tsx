@@ -16,7 +16,6 @@ import { ProgressBar } from '@/components/progress-bar'
 import { useSession } from '@/components/session-provider'
 import {
   subjects,
-  subjectProgress,
   getActivitiesForSubject,
   getCourseStudents,
   getBadge,
@@ -27,6 +26,7 @@ import {
   levelProgressPct,
   xpToNextLevel,
   GAME_TYPE_META,
+  getStoredActivityResults,
 } from '@/lib/adventure/gamification'
 import { cn } from '@/lib/utils'
 
@@ -35,12 +35,14 @@ export default function DashboardPage() {
   const level = levelFromXp(student.xp)
   const english = subjects[0]
 
-  const progress = subjectProgress[student.id]?.[0] ?? {
+  const completedResults = getStoredActivityResults(student.id)
+  const gradeActivities = getActivitiesForSubject(english.id).filter((activity) => activity.grade === student.grade || (student.grade === '2' && activity.grade === '1') || (student.grade === '4' && activity.grade === '3') || (student.grade === '6' && activity.grade === '5'))
+  const progress = {
     subjectId: english.id,
-    progressPct: 0,
+    progressPct: gradeActivities.length ? Math.round((completedResults.filter((result) => gradeActivities.some((activity) => activity.id === result.activityId)).length / gradeActivities.length) * 100) : 0,
     level,
-    activitiesTotal: getActivitiesForSubject(english.id).length,
-    activitiesCompleted: 0,
+    activitiesTotal: gradeActivities.length,
+    activitiesCompleted: completedResults.filter((result) => gradeActivities.some((activity) => activity.id === result.activityId)).length,
     xpEarned: student.xp,
   }
 
