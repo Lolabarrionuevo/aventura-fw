@@ -123,225 +123,38 @@ export const subjectProgress: Record<string, SubjectProgress[]> = {
 }
 
 export const activities: Activity[] = [
-  {
-    id: 'a-1',
-    title: 'Animales / Animals',
-    description: 'Aprende los nombres de los animales en inglés.',
-    type: 'multiple-choice',
-    difficulty: 'facil',
-    subjectId: 's-english',
-    grade: '4',
-    xpReward: 60,
-    questions: [
-      {
-        id: 'q1',
-        prompt: '¿Cómo se dice "perro" en inglés?',
-        hint: 'Es la mascota más común',
-        options: ['Cat', 'Dog', 'Bird', 'Fish'],
-        answerIndex: 1,
-      },
-      {
-        id: 'q2',
-        prompt: '¿Cómo se dice "gato"?',
-        options: ['Dog', 'Horse', 'Cat', 'Cow'],
-        answerIndex: 2,
-      },
-      {
-        id: 'q3',
-        prompt: 'Elige la traducción de "pájaro"',
-        options: ['Bird', 'Bear', 'Bee', 'Bat'],
-        answerIndex: 0,
-      },
-    ],
-  },
-  {
-    id: 'a-2',
-    title: 'Colores / Colors',
-    description: '¿Verdadero o falso? Repasa los colores.',
-    type: 'true-false',
-    difficulty: 'facil',
-    subjectId: 's-english',
-    grade: '4',
-    xpReward: 50,
-    questions: [
-      { id: 'q1', prompt: '"Red" significa rojo', options: ['Verdadero', 'Falso'], answerIndex: 0 },
-      { id: 'q2', prompt: '"Blue" significa verde', options: ['Verdadero', 'Falso'], answerIndex: 1 },
-      { id: 'q3', prompt: '"Yellow" significa amarillo', options: ['Verdadero', 'Falso'], answerIndex: 0 },
-      { id: 'q4', prompt: '"Black" significa blanco', options: ['Verdadero', 'Falso'], answerIndex: 1 },
-    ],
-  },
-  {
-    id: 'a-3',
-    title: 'Completa la palabra',
-    description: 'Escribe la palabra en inglés que falta.',
-    type: 'complete-word',
-    difficulty: 'medio',
-    subjectId: 's-english',
-    grade: '4',
-    xpReward: 80,
-    questions: [
-      { id: 'q1', prompt: 'Casa en inglés: h___', hint: 'house', answer: 'house' },
-      { id: 'q2', prompt: 'Escuela en inglés: s_____', hint: 'school', answer: 'school' },
-      { id: 'q3', prompt: 'Libro en inglés: b___', hint: 'book', answer: 'book' },
-    ],
-  },
-  {
-    id: 'a-4',
-    title: 'Une los conceptos',
-    description: 'Conecta cada palabra con su traducción.',
-    type: 'match-concepts',
-    difficulty: 'medio',
-    subjectId: 's-english',
-    grade: '4',
-    xpReward: 90,
-    questions: [
-      {
-        id: 'q1',
-        prompt: 'Une cada palabra en inglés con su significado',
-        pairs: [
-          { left: 'Apple', right: 'Manzana' },
-          { left: 'Water', right: 'Agua' },
-          { left: 'Sun', right: 'Sol' },
-          { left: 'Friend', right: 'Amigo' },
-        ],
-      },
-    ],
-  },
-  {
-    id: 'a-5',
-    title: 'Ordena la oración',
-    description: 'Coloca las palabras en el orden correcto.',
-    type: 'order-elements',
-    difficulty: 'dificil',
-    subjectId: 's-english',
-    grade: '4',
-    xpReward: 100,
-    questions: [
-      { id: 'q1', prompt: 'Ordena: "Me llamo Ana"', sequence: ['My', 'name', 'is', 'Ana'] },
-      { id: 'q2', prompt: 'Ordena: "Tengo un gato"', sequence: ['I', 'have', 'a', 'cat'] },
-    ],
-  },
-  {
-    id: 'a-6',
-    title: 'Adivina la imagen',
-    description: 'Mira la imagen y elige la palabra correcta.',
-    type: 'image-question',
-    difficulty: 'facil',
-    subjectId: 's-english',
-    grade: '4',
-    xpReward: 70,
-    questions: [
-      {
-        id: 'q1',
-        prompt: '¿Qué es esto en inglés?',
-        image: '/games/apple.png',
-        options: ['Apple', 'Orange', 'Banana', 'Grape'],
-        answerIndex: 0,
-      },
-      {
-        id: 'q2',
-        prompt: '¿Qué animal es?',
-        image: '/games/cat.png',
-        options: ['Dog', 'Cat', 'Rabbit', 'Mouse'],
-        answerIndex: 1,
-      },
-    ],
-  },
-  {
-    id: 'a-7',
-    title: 'Juego de memoria',
-    description: 'Encuentra las parejas palabra–traducción.',
-    type: 'memory',
-    difficulty: 'medio',
-    subjectId: 's-english',
-    grade: '4',
-    xpReward: 85,
-    questions: [
-      {
-        id: 'q1',
-        prompt: 'Encuentra las parejas',
-        pairs: [
-          { left: 'Cat', right: 'Gato' },
-          { left: 'Dog', right: 'Perro' },
-          { left: 'Sun', right: 'Sol' },
-          { left: 'Book', right: 'Libro' },
-        ],
-      },
-    ],
-  },
-  {
-    id: 'demo-animal',
-    title: 'Tap the Animal',
-    description: 'Listen carefully and tap the right animal.',
-    type: 'image-question',
-    difficulty: 'facil',
-    subjectId: 's-english',
-    grade: '1',
-    xpReward: 10,
-    questions: [{ id: 'q1', prompt: 'Tap the dog!', image: '/games/cat.png', options: ['Cat', 'Dog', 'Bird'], answerIndex: 1 }],
-  },
-  {
-    id: 'demo-colors',
-    title: 'Match the Colors',
-    description: 'Match each object with its color.',
-    type: 'match-concepts',
-    difficulty: 'facil',
-    subjectId: 's-english',
-    grade: '1',
-    xpReward: 10,
-    questions: [{ id: 'q1', prompt: 'Match each object with its color.', pairs: [{ left: 'Apple', right: 'Red' }, { left: 'Kite', right: 'Blue' }, { left: 'Sun', right: 'Yellow' }] }],
-  },
-  {
-    id: 'demo-sentence',
-    title: 'Build the Sentence',
-    description: 'Put the words in the correct order.',
-    type: 'order-elements',
-    difficulty: 'medio',
-    subjectId: 's-english',
-    grade: '3',
-    xpReward: 15,
-    questions: [{ id: 'q1', prompt: 'Build: She is riding a bike.', sequence: ['She', 'is', 'riding', 'a bike', 'boy'] }],
-  },
-  {
-    id: 'demo-detective',
-    title: 'Picture Detective',
-    description: 'Look closely at the room and answer the question.',
-    type: 'image-question',
-    difficulty: 'medio',
-    subjectId: 's-english',
-    grade: '3',
-    xpReward: 15,
-    questions: [{ id: 'q1', prompt: 'Where is the ball?', image: '/games/apple.png', options: ['The ball is under the bed.', 'The ball is under the desk.', 'The ball is under the chair.'], answerIndex: 1 }],
-  },
-  {
-    id: 'demo-read',
-    title: 'Read & Discover',
-    description: 'Read the short text and discover the answer.',
-    type: 'multiple-choice',
-    difficulty: 'dificil',
-    subjectId: 's-english',
-    grade: '5',
-    xpReward: 20,
-    questions: [{ id: 'q1', prompt: 'Tom and Mia are in the park. They find a strange map behind a tree. Where could it lead? What do they find?', image: '/games/apple.png', options: ['A map.', 'A treasure chest.', 'A backpack.'], answerIndex: 0 }],
-  },
-  {
-    id: 'a-8',
-    title: 'Quiz contra reloj',
-    description: 'Responde todo lo que puedas antes de que acabe el tiempo.',
-    type: 'timed-quiz',
-    difficulty: 'dificil',
-    subjectId: 's-english',
-    grade: '4',
-    xpReward: 120,
-    timeLimitSec: 45,
-    questions: [
-      { id: 'q1', prompt: '"One" es...', options: ['Uno', 'Dos', 'Tres'], answerIndex: 0 },
-      { id: 'q2', prompt: '"Three" es...', options: ['Dos', 'Tres', 'Cuatro'], answerIndex: 1 },
-      { id: 'q3', prompt: '"Five" es...', options: ['Cinco', 'Seis', 'Siete'], answerIndex: 0 },
-      { id: 'q4', prompt: '"Ten" es...', options: ['Nueve', 'Diez', 'Once'], answerIndex: 1 },
-      { id: 'q5', prompt: '"Seven" es...', options: ['Siete', 'Ocho', 'Seis'], answerIndex: 0 },
-    ],
-  },
+  // Grade 1: seven games, 10 XP each.
+  { id: 'g1-family', title: 'Family', description: 'Listen and choose the correct family member.', type: 'image-question', difficulty: 'facil', subjectId: 's-english', grade: '1', xpReward: 10, questions: [
+    { id: 'family-1', prompt: 'Listen and choose: mum.', image: '/games/family-mum.png', options: ['Mum', 'Dad', 'Sister'], answerIndex: 0 }, { id: 'family-2', prompt: 'Listen and choose: dad.', image: '/games/family-dad.png', options: ['Brother', 'Dad', 'Grandma'], answerIndex: 1 }, { id: 'family-3', prompt: 'Listen and choose: sister.', image: '/games/family-sister.png', options: ['Sister', 'Auntie', 'Grandpa'], answerIndex: 0 }, { id: 'family-4', prompt: 'Listen and choose: brother.', image: '/games/family-brother.png', options: ['Grandpa', 'Brother', 'Mum'], answerIndex: 1 }, { id: 'family-5', prompt: 'Listen and choose: grandma.', image: '/games/family-grandma.png', options: ['Grandma', 'Dad', 'Auntie'], answerIndex: 0 },
+  ] },
+  { id: 'g1-body', title: 'Parts of the Body', description: 'Match the word with the correct part of the body.', type: 'match-concepts', difficulty: 'facil', subjectId: 's-english', grade: '1', xpReward: 10, questions: [{ id: 'body-1', prompt: 'Match the word with the correct part of the body.', pairs: [{ left: 'Head', right: 'Head' }, { left: 'Arms', right: 'Arms' }, { left: 'Hands', right: 'Hands' }, { left: 'Legs', right: 'Legs' }, { left: 'Feet', right: 'Feet' }] }] },
+  { id: 'g1-big-small', title: 'Big or Small', description: 'Choose the big or small one.', type: 'image-question', difficulty: 'facil', subjectId: 's-english', grade: '1', xpReward: 10, questions: [{ id: 'size-1', prompt: 'Tap the BIG elephant.', image: '/games/elephant-big.png', options: ['Big', 'Small'], answerIndex: 0 }, { id: 'size-2', prompt: 'Tap the SMALL car.', image: '/games/car-small.png', options: ['Big', 'Small'], answerIndex: 1 }, { id: 'size-3', prompt: 'Tap the BIG ball.', image: '/games/ball-big.png', options: ['Big', 'Small'], answerIndex: 0 }, { id: 'size-4', prompt: 'Tap the SMALL teddy.', image: '/games/teddy-small.png', options: ['Big', 'Small'], answerIndex: 1 }, { id: 'size-5', prompt: 'Tap the BIG tree.', image: '/games/tree-big.png', options: ['Big', 'Small'], answerIndex: 0 }] },
+  { id: 'g1-short-long', title: 'Short or Long', description: 'Look at the pictures and choose short or long.', type: 'multiple-choice', difficulty: 'facil', subjectId: 's-english', grade: '1', xpReward: 10, questions: [{ id: 'length-1', prompt: 'Choose the long pencil.', options: ['Short', 'Long'], answerIndex: 1 }, { id: 'length-2', prompt: 'Choose the short rope.', options: ['Short', 'Long'], answerIndex: 0 }, { id: 'length-3', prompt: 'Choose the long ruler.', options: ['Short', 'Long'], answerIndex: 1 }, { id: 'length-4', prompt: 'Choose the short snake.', options: ['Short', 'Long'], answerIndex: 0 }, { id: 'length-5', prompt: 'Choose the long train.', options: ['Short', 'Long'], answerIndex: 1 }] },
+  { id: 'g1-food', title: 'Food', description: 'Choose the healthy food.', type: 'multiple-choice', difficulty: 'facil', subjectId: 's-english', grade: '1', xpReward: 10, questions: [{ id: 'food-1', prompt: 'Choose the healthy food.', options: ['Apple', 'Fries', 'Ice cream'], answerIndex: 0 }, { id: 'food-2', prompt: 'Choose the healthy food.', options: ['Burger', 'Broccoli', 'Fries'], answerIndex: 1 }, { id: 'food-3', prompt: 'Choose the healthy food.', options: ['Ice cream', 'Fries', 'Fish'], answerIndex: 2 }] },
+  { id: 'g1-pets', title: 'Animals (Pets)', description: 'Match the animal with the correct name.', type: 'image-question', difficulty: 'facil', subjectId: 's-english', grade: '1', xpReward: 10, questions: [{ id: 'pet-cat', prompt: 'Match the animal with the correct name.', image: '/games/cat.png', options: ['Dog', 'Cat', 'Rabbit'], answerIndex: 1 }, { id: 'pet-dog', prompt: 'Match the animal with the correct name.', image: '/games/dog.png', options: ['Dog', 'Cat', 'Bird'], answerIndex: 0 }, { id: 'pet-rabbit', prompt: 'Match the animal with the correct name.', image: '/games/rabbit.png', options: ['Bird', 'Rabbit', 'Dog'], answerIndex: 1 }, { id: 'pet-bird', prompt: 'Match the animal with the correct name.', image: '/games/bird.png', options: ['Cat', 'Dog', 'Bird'], answerIndex: 2 }] },
+  { id: 'g1-can', title: "Can / Can't", description: 'Look at the pictures and choose can or can\'t.', type: 'multiple-choice', difficulty: 'facil', subjectId: 's-english', grade: '1', xpReward: 10, questions: [{ id: 'can-1', prompt: 'She can ride a bike.', options: ['Can', "Can't"], answerIndex: 0 }, { id: 'can-2', prompt: "He can't fly.", options: ['Can', "Can't"], answerIndex: 1 }, { id: 'can-3', prompt: 'He can swim.', options: ['Can', "Can't"], answerIndex: 0 }, { id: 'can-4', prompt: "She can't lift a car.", options: ['Can', "Can't"], answerIndex: 1 }, { id: 'can-5', prompt: 'They can play football.', options: ['Can', "Can't"], answerIndex: 0 }] },
+
+  // Grade 3: seven games, 15 XP each.
+  { id: 'g3-subjects', title: 'School Subjects', description: 'Look at the images and choose the correct subject.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '3', xpReward: 15, questions: ['Math', 'English', 'Science', 'Art', 'Music', 'PE', 'History'].map((subject, i) => ({ id: `subject-${i}`, prompt: `Choose ${subject}.`, options: [subject, 'English', 'Math'].filter((v, j, a) => a.indexOf(v) === j), answerIndex: 0 })) },
+  { id: 'g3-sports', title: "Sports: Can / Can't", description: "Look at the pictures and choose if they can or can't do the sport.", type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '3', xpReward: 15, questions: [{ id: 'sport-1', prompt: 'She can play soccer.', options: ['Can', "Can't"], answerIndex: 0 }, { id: 'sport-2', prompt: 'He can swim.', options: ['Can', "Can't"], answerIndex: 0 }, { id: 'sport-3', prompt: "He can't play tennis.", options: ['Can', "Can't"], answerIndex: 1 }, { id: 'sport-4', prompt: 'She can ride a bike.', options: ['Can', "Can't"], answerIndex: 0 }] },
+  { id: 'g3-animals-prepositions', title: 'Animals: Prepositions', description: 'Look at the image and choose the correct option.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '3', xpReward: 15, questions: [{ id: 'scene-cat', prompt: 'Where is the cat?', options: ['On the table.', 'Under the table.', 'In the bowl.'], answerIndex: 0 }, { id: 'scene-dog', prompt: 'Where is the dog?', options: ['On the table.', 'Under the table.', 'Next to the fish tank.'], answerIndex: 1 }, { id: 'scene-fly', prompt: 'The dog ___ fly.', options: ['can', "can't"], answerIndex: 1 }] },
+  { id: 'g3-clothes', title: 'Clothes', description: 'Look at the pictures and choose the correct option.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '3', xpReward: 15, questions: [{ id: 'clothes-1', prompt: 'She is wearing a dress.', options: ['A dress', 'Shorts', 'A hoodie'], answerIndex: 0 }, { id: 'clothes-2', prompt: 'He is wearing a hoodie.', options: ['A skirt', 'A hoodie', 'A jacket'], answerIndex: 1 }, { id: 'clothes-3', prompt: 'She is wearing a jacket.', options: ['A jacket', 'A dress', 'Shorts'], answerIndex: 0 }, { id: 'clothes-4', prompt: 'He is wearing shorts.', options: ['A t-shirt', 'A jacket', 'Shorts'], answerIndex: 2 }] },
+  { id: 'g3-food-preferences', title: 'Food: Like / Don\'t Like', description: 'Look at the food and choose if they like it or not.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '3', xpReward: 15, questions: [{ id: 'like-1', prompt: 'He likes vegetables.', options: ['Likes it', "Doesn't like it"], answerIndex: 0 }, { id: 'like-2', prompt: "She doesn't like burgers.", options: ['Likes it', "Doesn't like it"], answerIndex: 1 }, { id: 'like-3', prompt: 'He likes pizza.', options: ['Likes it', "Doesn't like it"], answerIndex: 0 }, { id: 'like-4', prompt: "She doesn't like ice cream.", options: ['Likes it', "Doesn't like it"], answerIndex: 1 }, { id: 'like-5', prompt: 'He likes apples.', options: ['Likes it', "Doesn't like it"], answerIndex: 0 }] },
+  { id: 'g3-body-count', title: 'Parts of the Body: Has Got', description: 'Look at the monsters and complete the sentences.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '3', xpReward: 15, questions: [{ id: 'monster-1', prompt: 'It has got ___ eyes.', options: ['One', 'Two', 'Three'], answerIndex: 1 }, { id: 'monster-2', prompt: "It hasn't got ___ legs.", options: ['Two', 'Four', 'Six'], answerIndex: 0 }, { id: 'monster-3', prompt: 'It has got ___ arms.', options: ['One', 'Two', 'Three'], answerIndex: 2 }] },
+  { id: 'g3-beach', title: 'Activities on the Beach', description: "Look at the picture and choose what they want or don't want to do.", type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '3', xpReward: 15, questions: [{ id: 'beach-1', prompt: 'I want to build a sandcastle.', options: ['Want to', "Don't want to"], answerIndex: 0 }, { id: 'beach-2', prompt: "She doesn't want to swim.", options: ['Want to', "Doesn't want to"], answerIndex: 1 }, { id: 'beach-3', prompt: 'He wants to surf.', options: ['Wants to', "Doesn't want to"], answerIndex: 0 }, { id: 'beach-4', prompt: 'We want to play with the ball.', options: ['Want to', "Don't want to"], answerIndex: 0 }, { id: 'beach-5', prompt: "I don't want to sunbathe.", options: ['Want to', "Don't want to"], answerIndex: 1 }] },
+
+  // Grade 4: eleven games; the last one awards 20 XP.
+  { id: 'g4-subjects', title: 'School Subjects', description: 'Look at the pictures and choose the correct subject.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '4', xpReward: 15, questions: ['English', 'Math', 'Geography', 'Science', 'Art', 'Music', 'IT', 'History'].map((subject, i) => ({ id: `g4-subject-${i}`, prompt: `Choose ${subject}.`, options: [subject, 'English', 'Math'].filter((v, j, a) => a.indexOf(v) === j), answerIndex: 0 })) },
+  { id: 'g4-days', title: 'Days of the Week', description: 'Listen and choose the correct day.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '4', xpReward: 15, questions: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map((day, i) => ({ id: `day-${i}`, prompt: `It's ${day}.`, options: [day, 'Monday', 'Sunday'].filter((v, j, a) => a.indexOf(v) === j), answerIndex: 0 })) },
+  { id: 'g4-time', title: 'The Time', description: 'What time is it? Choose the correct option.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '4', xpReward: 15, questions: [{ id: 'time-1', prompt: "It's three o'clock.", options: ["It's three o'clock", "It's nine o'clock", "It's six o'clock"], answerIndex: 0 }, { id: 'time-2', prompt: "It's nine o'clock.", options: ["It's three o'clock", "It's nine o'clock", "It's six o'clock"], answerIndex: 1 }, { id: 'time-3', prompt: "It's six o'clock.", options: ["It's three o'clock", "It's nine o'clock", "It's six o'clock"], answerIndex: 2 }, { id: 'time-4', prompt: "It's one o'clock.", options: ["It's one o'clock", "It's five o'clock", "It's ten o'clock"], answerIndex: 0 }, { id: 'time-5', prompt: "It's ten o'clock.", options: ["It's one o'clock", "It's five o'clock", "It's ten o'clock"], answerIndex: 2 }] },
+  { id: 'g4-have-has', title: 'Have / Has Got', description: 'Look at the picture and complete the sentences.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '4', xpReward: 15, questions: [{ id: 'have-1', prompt: 'She ___ a backpack.', options: ['has got', 'have got'], answerIndex: 0 }, { id: 'have-2', prompt: 'I ___ a pencil case.', options: ['has got', 'have got'], answerIndex: 1 }, { id: 'have-3', prompt: 'They ___ books.', options: ['has got', 'have got'], answerIndex: 1 }, { id: 'have-4', prompt: 'He ___ a water bottle.', options: ['has got', 'have got'], answerIndex: 0 }] },
+  { id: 'g4-weather', title: 'Weather', description: 'Look at the picture and choose the correct option.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '4', xpReward: 15, questions: ['sunny', 'rainy', 'cloudy', 'snowy', 'windy', 'stormy'].map((weather, i) => ({ id: `weather-${i}`, prompt: `What's the weather like? ${weather}.`, options: [weather, 'sunny', 'rainy'].filter((v, j, a) => a.indexOf(v) === j), answerIndex: 0 })) },
+  { id: 'g4-is-isnt', title: "It Is / Isn't", description: 'Look at the picture and complete the sentences.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '4', xpReward: 15, questions: [{ id: 'place-park', prompt: 'It ___ a park.', options: ['is', "isn't"], answerIndex: 0 }, { id: 'place-school', prompt: "It ___ a hospital. It is a school.", options: ['is', "isn't"], answerIndex: 1 }, { id: 'place-city', prompt: 'It ___ a city.', options: ['is', "isn't"], answerIndex: 0 }] },
+  { id: 'g4-present-simple', title: 'Present Simple', description: 'Look at the picture and choose the correct option.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '4', xpReward: 15, questions: [{ id: 'present-1', prompt: 'He ___ soccer.', options: ['play', 'plays', 'is playing'], answerIndex: 1 }, { id: 'present-2', prompt: 'I ___ English.', options: ['study', 'studies', 'is studying'], answerIndex: 0 }, { id: 'present-3', prompt: 'They ___ every day.', options: ['run', 'runs', 'is running'], answerIndex: 0 }, { id: 'present-4', prompt: 'She ___ books.', options: ['read', 'reads', 'is reading'], answerIndex: 1 }, { id: 'present-5', prompt: 'We ___ at school.', options: ['learn', 'learns', 'is learning'], answerIndex: 0 }] },
+  { id: 'g4-routines', title: 'Routines', description: 'Look at the pictures and put the sentences in order.', type: 'order-elements', difficulty: 'medio', subjectId: 's-english', grade: '4', xpReward: 15, questions: [{ id: 'routine-1', prompt: 'Order: I get up at 7 o\'clock.', sequence: ['I', 'get up', "at 7 o'clock"] }, { id: 'routine-2', prompt: 'Order: I brush my teeth.', sequence: ['I', 'brush', 'my teeth'] }, { id: 'routine-3', prompt: 'Order: I go to school.', sequence: ['I', 'go', 'to school'] }, { id: 'routine-4', prompt: 'Order: I do my homework.', sequence: ['I', 'do', 'my homework'] }] },
+  { id: 'g4-present-continuous', title: 'Present Continuous', description: 'Look at the picture and choose the correct option.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '4', xpReward: 15, questions: [{ id: 'continuous-1', prompt: 'She ___ in the pool.', options: ['swims', 'swim', 'is swimming'], answerIndex: 2 }, { id: 'continuous-2', prompt: 'He ___ a book now.', options: ['reads', 'read', 'is reading'], answerIndex: 2 }, { id: 'continuous-3', prompt: 'They ___ football now.', options: ['play', 'plays', 'are playing'], answerIndex: 2 }, { id: 'continuous-4', prompt: 'I ___ dinner.', options: ['cook', 'cooks', 'am cooking'], answerIndex: 2 }, { id: 'continuous-5', prompt: 'She ___ a song.', options: ['sings', 'sing', 'is singing'], answerIndex: 2 }] },
+  { id: 'g4-there', title: 'There Is / There Are', description: 'Look at the picture and complete the sentences.', type: 'multiple-choice', difficulty: 'medio', subjectId: 's-english', grade: '4', xpReward: 15, questions: [{ id: 'there-1', prompt: 'There ___ a sofa.', options: ['is', 'are'], answerIndex: 0 }, { id: 'there-2', prompt: 'There ___ two chairs.', options: ['is', 'are'], answerIndex: 1 }, { id: 'there-3', prompt: 'There ___ a TV.', options: ['is', 'are'], answerIndex: 0 }, { id: 'there-4', prompt: 'There ___ a cat.', options: ['is', 'are'], answerIndex: 0 }] },
+  { id: 'g4-places-town', title: 'Places in Town / City', description: 'Look at the map and choose the correct place.', type: 'multiple-choice', difficulty: 'dificil', subjectId: 's-english', grade: '4', xpReward: 20, questions: [{ id: 'town-library', prompt: 'Where is the library?', options: ['Next to the park', 'In front of the school', 'Opposite the hospital'], answerIndex: 0 }, { id: 'town-hospital', prompt: 'Where is the hospital?', options: ['Next to the park', 'In front of the school', 'Opposite the library'], answerIndex: 2 }, { id: 'town-school', prompt: 'Where is the school?', options: ['Next to the supermarket', 'Opposite the hospital', 'Next to the bus station'], answerIndex: 0 }, { id: 'town-park', prompt: 'Where is the park?', options: ['Next to the library', 'In front of the school', 'Opposite the supermarket'], answerIndex: 0 }, { id: 'town-bus', prompt: 'Where is the bus station?', options: ['Next to the school', 'Opposite the park', 'In front of the hospital'], answerIndex: 0 }] },
 ]
 
 // --- Datos de análisis para el portal del profesor ---
@@ -683,33 +496,7 @@ export const GRADE_LABELS: Record<Grade, string> = {
 export const GRADE_OPTIONS: Grade[] = ['1', '2', '3', '4', '5', '6']
 
 export function getActivitiesForGrade(grade: Grade): Activity[] {
-  const baseDifficulty = grade === '1' || grade === '2' ? 'facil' : grade === '3' || grade === '4' ? 'medio' : 'dificil'
-  const isEarlyGrade = grade === '1' || grade === '2'
-  const isAdvancedGrade = grade === '5' || grade === '6'
-
-  const gradeGroup = isEarlyGrade ? 'early' : isAdvancedGrade ? 'advanced' : 'middle'
-  return activities
-    .filter((activity) => {
-      const activityGroup = activity.grade === '1' || activity.grade === '2'
-        ? 'early'
-        : activity.grade === '5' || activity.grade === '6'
-          ? 'advanced'
-          : 'middle'
-      return activityGroup === gradeGroup && (!isEarlyGrade || activity.difficulty !== 'dificil')
-    })
-    .map((activity) => ({
-      ...activity,
-      grade,
-      difficulty: baseDifficulty,
-      description: isEarlyGrade
-        ? `${activity.description} Palabras cortas y apoyo visual.`
-        : isAdvancedGrade
-          ? `${activity.description} Incluye comprensión y razonamiento avanzado.`
-          : activity.description,
-      questions: isEarlyGrade
-        ? activity.questions.slice(0, Math.max(1, Math.ceil(activity.questions.length / 2)))
-        : activity.questions,
-    }))
+  return activities.filter((activity) => activity.grade === grade)
 }
 
 export function getActivityForGrade(id: string, grade: Grade): Activity | undefined {

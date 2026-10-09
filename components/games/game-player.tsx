@@ -69,18 +69,23 @@ export function GamePlayer({ activity }: { activity: Activity }) {
     })
     const results = JSON.parse(localStorage.getItem(ACTIVITY_RESULTS_KEY) ?? '[]') as Array<{
       studentId: string
+      grade?: string
       activityId: string
       score: number
       xpEarned: number
       completedAt: string
     }>
     const alreadyCompleted = results.some(
-      (item) => item.studentId === student.id && item.activityId === activity.id,
+      (item) =>
+        item.studentId === student.id &&
+        (item.grade ?? activity.grade) === student.grade &&
+        item.activityId === activity.id,
     )
     const awardedXp = alreadyCompleted ? 0 : xpEarned
     if (!alreadyCompleted) {
       results.push({
         studentId: student.id,
+        grade: student.grade,
         activityId: activity.id,
         score,
         xpEarned,

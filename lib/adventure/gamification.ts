@@ -7,6 +7,7 @@ export const ACTIVITY_RESULTS_KEY = 'adventure-activity-results'
 
 export interface StoredActivityResult {
   studentId: string
+  grade: string
   activityId: string
   score: number
   xpEarned: number
